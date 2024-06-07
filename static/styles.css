@@ -1,0 +1,61 @@
+body {
+    background-color: #1e1e1e;
+    color: #cfcfcf;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.input-section, .output-section {
+    margin: 20px 0;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input[type="file"], select, button {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #444;
+    color: #cfcfcf;
+    border: 1px solid #555;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #556b2f;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #6b8e23;
+}
+
+#map-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#results {
+    background-color: #444;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+#results p {
+    margin: 10px 0;
+}

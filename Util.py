@@ -158,7 +158,7 @@ def read_map(filename):
 if __name__ == '__main__':
     filename = 'map.txt'
     graph = read_map(filename)
-    print(graph.vertices)
+    print(list(graph.vertices.items()))
     print(graph.edges)
     start = 'Country1'
     end = 'Country6'

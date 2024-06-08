@@ -31,6 +31,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 #world-map {
@@ -103,5 +104,15 @@ button:hover {
 
 .index-input-section, .index-output-section {
     margin: 20px 0;
+}
+
+.country-button {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: red;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
 }
 

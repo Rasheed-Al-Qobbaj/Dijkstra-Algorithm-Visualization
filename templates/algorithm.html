@@ -10,6 +10,9 @@
     <div class="container">
         <div id="map-container">
             <img src="{{ url_for('static', filename='world-map.jpg') }}" alt="World Map" id="world-map">
+            {% for country, coords in vertices %}
+                <button class="country-button" id="{{ country }}" style="left: {{ coords[0] }}px; top: {{ coords[1] }}px;"></button>
+            {% endfor %}
         </div>
         <div class="content">
             <div class="input-section">
@@ -17,13 +20,13 @@
                     <input type="hidden" name="file_path" value="{{ file_path }}">
                     <label for="start-select">Source:</label>
                     <select id="start-select" name="start">
-                        {% for vertics in vertices %}
+                        {% for vertics, _ in vertices %}
                             <option value="{{ vertics }}">{{ vertics }}</option>
                         {% endfor %}
                     </select>
                     <label for="end-select">Target:</label>
                     <select id="end-select" name="end">
-                        {% for vertics in vertices %}
+                        {% for vertics, _ in vertices %}
                             <option value="{{ vertics }}">{{ vertics }}</option>
                         {% endfor %}
                     </select>

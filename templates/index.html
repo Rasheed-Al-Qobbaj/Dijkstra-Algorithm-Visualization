@@ -6,32 +6,19 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <div class="container">
+    <div class="index-container">
         <h1>Dijkstra's Algorithm Visualization</h1>
-        <div class="input-section">
+        <div class="index-input-section">
             <form id="upload-form" action="/upload" method="post" enctype="multipart/form-data">
                 <label for="file-input">Upload Map File:</label>
                 <input type="file" id="file-input" name="file">
-                <label for="start-select">Start City:</label>
-                <select id="start-select" name="start">
-                    <!-- Options will be populated by Flask -->
-                </select>
-                <label for="end-select">End City:</label>
-                <select id="end-select" name="end">
-                    <!-- Options will be populated by Flask -->
-                </select>
-                <button type="submit">Run Algorithm</button>
+                <button type="submit">Upload File</button>
             </form>
         </div>
-        <div class="output-section">
-            <h2>Results</h2>
+        <div class="index-output-section">
+            <h2>Map</h2>
             <div id="map-container">
-                <img src="world-map.jpg" alt="World Map">
-                <!-- Map image placeholder -->
-            </div>
-            <div id="results">
-                <p>Path: <span id="path"></span></p>
-                <p>Distance: <span id="distance"></span></p>
+                <img src="{{ url_for('static', filename='world-map.jpg') }}" alt="World Map" width="100%">
             </div>
         </div>
     </div>

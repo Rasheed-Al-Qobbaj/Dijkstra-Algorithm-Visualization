@@ -31,18 +31,18 @@ def upload_file():
         file.save(file_path)
         graph = read_map(file_path)
         vertices = list(graph.vertices.keys())
-        return render_template('index.html', vertices=vertices)
+        return render_template('algorithm.html', vertices=vertices, file_path=file_path, path=None, distance=None)
     return redirect(request.url)
 
 @app.route('/run_algorithm', methods=['POST'])
 def run_algorithm():
-    data = request.get_json()
-    start = data['start']
-    end = data['end']
-    file_path = data['file_path']
+    start = request.form['start']
+    end = request.form['end']
+    file_path = request.form['file_path']
     graph = read_map(file_path)
     path, distance = dijkstra(graph, start, end)
-    return jsonify({'path': path, 'distance': distance})
+    vertices = list(graph.vertices.keys())
+    return render_template('algorithm.html', vertices=vertices, file_path=file_path, path=path, distance=distance)
 
 if __name__ == '__main__':
     app.run(debug=True)

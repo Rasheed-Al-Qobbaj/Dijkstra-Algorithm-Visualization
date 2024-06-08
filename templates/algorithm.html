@@ -9,30 +9,29 @@
     <h1>Dijkstra's Algorithm Visualization</h1>
     <div class="container">
         <div id="map-container">
-                <img src="{{ url_for('static', filename='world-map.jpg') }}" alt="World Map">
+            <img src="{{ url_for('static', filename='world-map.jpg') }}" alt="World Map" id="world-map">
         </div>
         <div class="content">
             <div class="input-section">
                 <form id="algorithm-form" action="/run_algorithm" method="post">
                     <input type="hidden" name="file_path" value="{{ file_path }}">
-                    <label for="start-select">Start City:</label>
+                    <label for="start-select">Source:</label>
                     <select id="start-select" name="start">
                         {% for vertics in vertices %}
                             <option value="{{ vertics }}">{{ vertics }}</option>
                         {% endfor %}
                     </select>
-                    <label for="end-select">End City:</label>
+                    <label for="end-select">Target:</label>
                     <select id="end-select" name="end">
                         {% for vertics in vertices %}
                             <option value="{{ vertics }}">{{ vertics }}</option>
                         {% endfor %}
                     </select>
-                    <button type="submit">Run Algorithm</button>
+                    <button type="submit">Run</button>
                 </form>
             </div>
             <div class="output-section">
                 <h2>Results</h2>
-
                 <div id="results">
                     <p>Path: <span id="path">{{ path|join(' -> ') if path else '' }}</span></p>
                     <p>Distance: <span id="distance">{{ distance if distance else '' }}</span></p>

@@ -6,15 +6,19 @@ body {
     background-color: #1e1e1e;
     color: #cfcfcf;
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 h1 {
     text-align: center;
+    margin-top: 20px;
 }
 
 .container {
-    max-width: 800px;
-    margin: 50px auto;
+    max-width: 2000px;
+    max-height: 1200px;
+    margin: 20px auto;
     padding: 20px;
     background-color: #333;
     border-radius: 8px;
@@ -22,55 +26,72 @@ h1 {
     flex-direction: row;
 }
 
+#map-container {
+    flex: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#world-map {
+    width: 100%;
+    height: auto;
+    max-width: 1600px;
+    border-radius: 8px;
+}
+
+.content {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 20px;
+}
+
 .input-section, .output-section {
-    margin: 20px 0;
-    flex: 1;
+    background-color: #444;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
 }
 
 label {
     display: block;
     margin-bottom: 8px;
+    font-weight: bold;
 }
 
-input[type="file"], select, button {
+select, button {
     display: block;
     width: 100%;
     margin-bottom: 15px;
     padding: 10px;
-    background-color: #444;
+    background-color: #555;
     color: #cfcfcf;
-    border: 1px solid #555;
+    border: 1px solid #666;
     border-radius: 4px;
 }
 
 button {
     background-color: #556b2f;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 button:hover {
     background-color: #6b8e23;
 }
 
-#map-container {
-    flex: 1;
-}
-
 #results {
     background-color: #444;
-    padding: 10px;
-    border-radius: 4px;
+    padding: 20px;
+    border-radius: 8px;
 }
 
 #results p {
     margin: 10px 0;
 }
 
-.content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
 
 .index-container {
     max-width: 800px;

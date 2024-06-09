@@ -1,16 +1,32 @@
-6 9
-Country1 1000 2400
-Country2 8800 3000
-Country3 2400 2500
-Country4 4000 0
-Country5 4500 3800
-Country6 6000 1500
-Country1 Country2
-Country1 Country4
-Country2 Country3
-Country2 Country5
-Country3 Country5
-Country3 Country4
-Country3 Country6
-Country4 Country6
-Country5 Country6
+10 21
+USA 30 -100
+Canada 60 -103
+Mexico 20 -101
+Brazil -10 -50
+Argentine -35 -64
+Peru -10 -75
+Algeria 27 3
+China 35 105
+India 20 80
+Japan 35 140
+USA Canada
+USA Brazil
+Canada Mexico
+Canada Argentine
+Mexico Argentine
+Mexico Brazil
+Mexico Peru
+Brazil Peru
+Argentine Peru
+Algeria China
+Algeria India
+Algeria Japan
+China India
+China Japan
+India Japan
+Brazil Argentine
+Brazil Algeria
+Brazil China
+USA Mexico
+USA Argentine
+USA Algeria

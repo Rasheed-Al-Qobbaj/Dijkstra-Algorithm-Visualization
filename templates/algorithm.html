@@ -9,9 +9,10 @@
     <h1>Dijkstra's Algorithm Visualization</h1>
     <div class="container">
         <div id="map-container">
+            <canvas id="path-canvas" style="position: absolute; top: 0; left: 0;" width="1200" height="715"></canvas>
             <img src="{{ url_for('static', filename='world-map.jpg') }}" alt="World Map" id="world-map">
             {% for country, coords in vertices %}
-                <button class="country-button" id="{{ country }}" style="left: {{ coords[0] }}px; top: {{ coords[1] }}px;"></button>
+            <button class="country-button" id="{{ country }}" onclick="selectCountry('{{ country }}')" style="position:absolute; left: {{ coords[0] }}px; top: {{ coords[1] }}px;"></button>
             {% endfor %}
         </div>
         <div class="content">
@@ -36,11 +37,53 @@
             <div class="output-section">
                 <h2>Results</h2>
                 <div id="results">
-                    <p>Path: <span id="path">{{ path|join(' -> ') if path else '' }}</span></p>
-                    <p>Distance: <span id="distance">{{ distance if distance else '' }}</span></p>
+                    <p>Path: <span id="path">{{ path|join('  ->  ') if path else '' }}</span></p>
+                    <p>Distance: <span id="distance">{{ distance if distance else '0' }} Km</span></p>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+    var selectedCountries = [];
+
+    function selectCountry(country) {
+        selectedCountries.push(country);
+
+        if (selectedCountries.length === 1) {
+            document.getElementById('start-select').value = country;
+        } else if (selectedCountries.length === 2) {
+            document.getElementById('end-select').value = country;
+            document.getElementById('algorithm-form').submit();
+        }
+    }
+
+    // Draw the path on the canvas
+    function drawPath(path) {
+        var canvas = document.getElementById('path-canvas');
+        var ctx = canvas.getContext('2d');
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        ctx.beginPath();
+        for (var i = 0; i < path.length - 1; i++) {
+            var startCountry = document.getElementById(path[i]);
+            var endCountry = document.getElementById(path[i + 1]);
+
+            var startX = startCountry.offsetLeft + startCountry.offsetWidth / 2;
+            var startY = startCountry.offsetTop + startCountry.offsetHeight / 2;
+            var endX = endCountry.offsetLeft + endCountry.offsetWidth / 2;
+            var endY = endCountry.offsetTop + endCountry.offsetHeight / 2;
+
+            ctx.moveTo(startX, startY);
+            ctx.lineTo(endX, endY);
+        }
+        ctx.strokeStyle = 'red';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+    }
+
+    // Call the drawPath function with the path from the server
+    drawPath({{ path|tojson|safe }});
+    </script>
 </body>
 </html>

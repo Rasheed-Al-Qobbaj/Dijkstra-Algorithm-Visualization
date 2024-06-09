@@ -108,11 +108,13 @@ button:hover {
 
 .country-button {
     position: absolute;
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     background-color: red;
     border-radius: 50%;
     border: none;
     cursor: pointer;
+    margin: 0;
+    padding: 0;
 }
 

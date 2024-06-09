@@ -1,4 +1,4 @@
-import math
+from math import radians, cos, sin, asin, sqrt
 
 
 class Graph:
@@ -15,15 +15,27 @@ class Graph:
     def add_edge(self, from_vertex, to_vertex):
         """Adds an edge to the graph if both vertices exist."""
         if from_vertex in self.vertices and to_vertex in self.vertices:
-            self.edges[(from_vertex, to_vertex)] = self.euclidean_distance(from_vertex, to_vertex)
+            self.edges[(from_vertex, to_vertex)] = self.distance(from_vertex, to_vertex)
             self.adjacency_list[from_vertex].append(to_vertex)
             self.adjacency_list[to_vertex].append(from_vertex)
 
-    def euclidean_distance(self, vertex1, vertex2):
-        """Calculates the Euclidean distance between two vertices."""
-        x1, y1 = self.vertices[vertex1]
-        x2, y2 = self.vertices[vertex2]
-        return math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
+    def distance(self, vertex1, vertex2):
+        """Calculates the Haversine distance between two vertices."""
+        lat1, lon1 = map(radians, self.vertices[vertex1])
+        lat2, lon2 = map(radians, self.vertices[vertex2])
+
+        # Haversine formula
+        dlon = lon2 - lon1
+        dlat = lat2 - lat1
+        a = sin(dlat / 2) ** 2 + cos(lat1) * cos(lat2) * sin(dlon / 2) ** 2
+
+        c = 2 * asin(sqrt(a))
+
+        # Radius of earth in kilometers. Use 3956 for miles
+        r = 6371
+
+        # calculate the result
+        return c * r
 
 
 class MinHeap:
@@ -106,7 +118,7 @@ def dijkstra(graph, start, end):
             break
 
         for neighbor in graph.adjacency_list[current_vertex]:
-            distance = graph.euclidean_distance(current_vertex, neighbor)
+            distance = graph.distance(current_vertex, neighbor)
             new_distance = distances[current_vertex] + distance
 
             if new_distance < distances[neighbor]:
@@ -139,8 +151,8 @@ def read_map(filename):
             line = file.readline().strip()
             parts = line.split()
             name = parts[0]
-            x = int(parts[1])
-            y = int(parts[2])
+            x = float(parts[1])
+            y = float(parts[2])
             graph.add_vertex(name, x, y)
 
         # Read the edges
@@ -154,14 +166,13 @@ def read_map(filename):
     return graph
 
 
-
 if __name__ == '__main__':
     filename = 'map.txt'
     graph = read_map(filename)
     print(list(graph.vertices.items()))
     print(graph.edges)
-    start = 'Country1'
-    end = 'Country6'
+    start = 'USA'
+    end = 'Peru'
     path, distance = dijkstra(graph, start, end)
     print('The shortest path from', start, 'to', end, 'is:', path)
     print('The distance is:', distance)

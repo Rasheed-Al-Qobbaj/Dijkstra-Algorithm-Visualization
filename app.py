@@ -31,18 +31,28 @@ def upload_file():
         file.save(file_path)
         graph = read_map(file_path)
         # vertices = list(graph.vertices.items())
-        # Assume these are the dimensions of #map-container in your CSS
-        container_width = 1960
-        container_height = 700
 
-        # Scale the coordinates
-        scaled_vertices = {}
-        for country, (original_x, original_y) in graph.vertices.items():
-            scaled_x = (original_x / 8800) * container_width
-            scaled_y = (original_y / 3800) * container_height
-            scaled_vertices[country] = (scaled_x, scaled_y)
 
-        vertices = list(scaled_vertices.items())
+        # World map image dimensions
+        map_width = 1200  # width of the image in pixels
+        map_height = 715  # height of the image in pixels
+
+        # Correction factors (derived from manual adjustments)
+        x_scale_factor = 0.92  # Adjust this based on the observed shift
+        y_scale_factor = 0.9  # Adjust this based on the observed shift
+        x_offset = -30  # Adjust this based on the observed shift
+        y_offset = 100  # Adjust this based on the observed shift
+
+        # Convert the lat and lon coordinates to x and y coordinates
+        converted_vertices = {}
+        for country, (lat, lon) in graph.vertices.items():
+            # Calculate x and y with respect to the image dimensions
+            x = (((lon + 180) / 360) * map_width * x_scale_factor) + x_offset
+            y = (((90 - lat) / 180) * map_height * y_scale_factor) + y_offset
+            converted_vertices[country] = (x, y)
+
+        vertices = list(converted_vertices.items())
+
         return render_template('algorithm.html', vertices=vertices, file_path=file_path, path=None, distance=None)
     return redirect(request.url)
 
@@ -54,19 +64,29 @@ def run_algorithm():
     graph = read_map(file_path)
     path, distance = dijkstra(graph, start, end)
     # vertices = list(graph.vertices.items())
-    # Assume these are the dimensions of #map-container in your CSS
-    container_width = 1960
-    container_height = 700
 
-    # Scale the coordinates
-    scaled_vertices = {}
-    for country, (original_x, original_y) in graph.vertices.items():
-        scaled_x = (original_x / 8800) * container_width
-        scaled_y = (original_y / 3800) * container_height
-        scaled_vertices[country] = (scaled_x, scaled_y)
 
-    vertices = list(scaled_vertices.items())
-    return render_template('algorithm.html', vertices=vertices, file_path=file_path, path=path, distance=distance)
+    # World map image dimensions
+    map_width = 1200  # width of the image in pixels
+    map_height = 715  # height of the image in pixels
+
+    # Correction factors (derived from manual adjustments)
+    x_scale_factor = 0.92  # Adjust this based on the observed shift
+    y_scale_factor = 0.9  # Adjust this based on the observed shift
+    x_offset = -30  # Adjust this based on the observed shift
+    y_offset = 100  # Adjust this based on the observed shift
+
+    # Convert the lat and lon coordinates to x and y coordinates
+    converted_vertices = {}
+    for country, (lat, lon) in graph.vertices.items():
+        # Calculate x and y with respect to the image dimensions
+        x = (((lon + 180) / 360) * map_width * x_scale_factor) + x_offset
+        y = (((90 - lat) / 180) * map_height * y_scale_factor) + y_offset
+        converted_vertices[country] = (x, y)
+
+    vertices = list(converted_vertices.items())
+
+    return render_template('algorithm.html', vertices=vertices, file_path=file_path, path=path, distance=round(distance, 2))
 
 if __name__ == '__main__':
     app.run(debug=True)

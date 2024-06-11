@@ -20,17 +20,14 @@
                 <form id="algorithm-form" action="/run_algorithm" method="post">
                     <input type="hidden" name="file_path" value="{{ file_path }}">
                     <label for="start-select">Source:</label>
-                    <select id="start-select" name="start">
+                    <input list="countries" id="start-select" name="start">
+                    <datalist id="countries">
                         {% for vertics, _ in vertices %}
                             <option value="{{ vertics }}">{{ vertics }}</option>
                         {% endfor %}
-                    </select>
+                    </datalist>
                     <label for="end-select">Target:</label>
-                    <select id="end-select" name="end">
-                        {% for vertics, _ in vertices %}
-                            <option value="{{ vertics }}">{{ vertics }}</option>
-                        {% endfor %}
-                    </select>
+                    <input list="countries" id="end-select" name="end">
                     <button type="submit">Run</button>
                 </form>
             </div>

@@ -1,32 +1,133 @@
-10 21
+50 82
 USA 30 -100
 Canada 60 -103
 Mexico 20 -101
 Brazil -10 -50
-Argentine -35 -64
+Argentina -35 -64
 Peru -10 -75
 Algeria 27 3
 China 35 105
 India 20 80
 Japan 35 140
-USA Canada
-USA Brazil
-Canada Mexico
-Canada Argentine
-Mexico Argentine
-Mexico Brazil
-Mexico Peru
-Brazil Peru
-Argentine Peru
-Algeria China
-Algeria India
-Algeria Japan
-China India
-China Japan
-India Japan
-Brazil Argentine
-Brazil Algeria
-Brazil China
+SaudiArabia 23 44
+Australia -26 134
+SouthAfrica -30 25
+Russia 62 101
+Libya 26 17
+Egypt 24.5 29.5
+Turkey 36 35
+France 46 3
+UK 53 -2
+Sweden 62 13
+Angola -13 18
+Nigeria 8 7
+Chad 13 18
+Niger 16 8
+Sudan 15 30
+Tanzania -7 35
+Madagascar -20 47
+Mozambique -15 35
+Mali 16 -1
+Iran 32 53
+Iraq 32 44
+Spain 39.5 -4
+Italy 42 12
+Germany 51 9
+Yemen 14 46
+Indonesia -2 114
+NewZealand -45 169
+Thailand 14.5 100
+Afghanistan 31 65
+Pakistan 25 67
+Bolivia -17 -65
+Botswana -22 24
+Namibia -23 17
+Ethiopia 9 39
+Romania 45 25
+Ukraine 49 32
+Poland 54 19
+Finland 67 26
+Ireland 53 -8
+Palestine 28 34.2
+Canada USA
 USA Mexico
-USA Argentine
-USA Algeria
+Canada Mexico
+Mexico Brazil
+USA Brazil
+Mexico Peru
+Brazil Bolivia
+Peru Bolivia
+Argentina Brazil
+Argentina Bolivia
+Argentina Chile
+Brazil Mali
+Brazil Algeria
+Algeria Mali
+Algeria Niger
+Mali Niger
+Niger Chad
+Niger Nigeria
+Nigeria Chad
+Algeria Libya
+Libya Chad
+Libya Egypt
+Chad Sudan
+Sudan Egypt
+Sudan Ethiopia
+Sudan Niger
+Ethiopia Tanzania
+Ethiopia Angola
+Tanzania Angola
+Tanzania Mozambique
+Tanzania Madagascar
+Mozambique Madagascar
+Mozambique SouthAfrica
+Madagascar SouthAfrica
+SouthAfrica Namibia
+SouthAfrica Botswana
+Namibia Botswana
+Botswana Angola
+Ethiopia Yemen
+Yemen SaudiArabia
+Yemen Egypt
+Palestine Egypt
+Palestine Iraq
+Palestine Turkey
+Palestine SaudiArabia
+Iraq Turkey
+Iraq Iran
+Iran Afghanistan
+Iran Pakistan
+Afghanistan Pakistan
+Pakistan India
+India China
+China Russia
+Russia Ukraine
+Russia Finland
+India Thailand
+Thailand Indonesia
+Indonesia Australia
+Australia NewZealand
+Thailand Japan
+Japan China
+Turkey Ukraine
+Ukraine Poland
+Poland Germany
+Germany France
+France UK
+UK Ireland
+France Spain
+Spain Algeria
+Spain Italy
+Italy Algeria
+Italy Libya
+Libya Egypt
+Italy France
+Italy Germany
+Romania Ukraine
+Romania Poland
+Romania Turkey
+Finland Sweden
+Sweden Poland
+Sweden Germany
+Madagascar Australia

@@ -118,3 +118,14 @@ button:hover {
     padding: 0;
 }
 
+input[list="countries"] {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #555;
+    color: #cfcfcf;
+    border: 1px solid #666;
+    border-radius: 4px;
+}
+
